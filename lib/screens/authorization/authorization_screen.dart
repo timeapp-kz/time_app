@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:time_app/utils/common_utils.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:time_app/resources/components/primary_button.dart';
+import 'package:time_app/resources/values/app_dimensions.dart';
+import 'package:time_app/resources/values/app_colors.dart';
 
 class AuthorizationScreen extends StatefulWidget {
   @override
@@ -19,7 +22,8 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body:
-          ListView(
+          WillPopScope(
+              child: ListView(
             children: <Widget>[
               SizedBox(
                 height: screenAwareHeight(1680.0, context),
@@ -40,7 +44,8 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                   fontSize: screenAwareHeight(28, context)
               ),),
             ],
-          )
+          ), onWillPop: () => exitApp(context))
+
     );
   }
 
@@ -67,7 +72,29 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
             child: Text('Вы получите СМС код в течение $_smsCountdown сек', textAlign: TextAlign.center,),
           ) ,
         SizedBox(height: screenAwareHeight(56, context),),
-        _buildCodeInputButtons()
+        _buildCodeInputButtons(),
+        SizedBox(
+          height: screenAwareHeight(30, context),
+        ),
+        PrimaryButton(
+            gradientStops: AppColors.primaryButtonGradientStops,
+            gradientColors: AppColors.confirmButtonGradientColors,
+            buttonText: 'Принять',
+            onPressed: () => print(''),
+          height: screenAwareHeight(120, context),
+          width: screenAwareWidth(400, context),
+        ),
+        SizedBox(
+          height: screenAwareHeight(30, context),
+        ),
+        PrimaryButton(
+          gradientStops: AppColors.primaryButtonGradientStops,
+          gradientColors: AppColors.cancelButtonGradientColors,
+          buttonText: 'Отклонить',
+          onPressed: () => print(''),
+          height: screenAwareHeight(120, context),
+          width: screenAwareWidth(400, context),
+        )
       ],
     );
   }
