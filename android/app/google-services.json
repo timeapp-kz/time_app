@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "5740438551",
+    "firebase_url": "https://timeapp-12fe1.firebaseio.com",
+    "project_id": "timeapp-12fe1",
+    "storage_bucket": "timeapp-12fe1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5740438551:android:1dbfcd46b4046471",
+        "android_client_info": {
+          "package_name": "kz.time.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5740438551-rqeri2p9imkem69te7apo3f2tinnnnan.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kz.time.app",
+            "certificate_hash": "944bbf8b43081eedd23cee9212e4cd923408ff96"
+          }
+        },
+        {
+          "client_id": "5740438551-4ofpfarcfokkukbamigjerpeuml2sbfu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyu6Hd9Qqx2LWaHeXtugkM4FiRnp7qbnw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5740438551-4ofpfarcfokkukbamigjerpeuml2sbfu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,4 @@
-package com.example.time_app;
+package kz.time.app;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
