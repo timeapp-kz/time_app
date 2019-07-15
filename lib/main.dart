@@ -24,8 +24,13 @@ class TimeApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          color: Colors.white,
+          elevation: 0
+        ),
         scaffoldBackgroundColor: Colors.white,
         primarySwatch: Colors.green,
+        bottomAppBarColor: Colors.yellow,
       ),
       home: _buildHomePage(),
     );

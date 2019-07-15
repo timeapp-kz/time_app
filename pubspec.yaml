@@ -51,6 +51,14 @@ flutter:
    - lib/resources/assets/images/authorization_bg.jpg
    - lib/resources/assets/images/logo.svg
 
+   # Services assets
+   - lib/resources/assets/images/services/beauty-icon.svg
+   - lib/resources/assets/images/services/auto-icon.svg
+   - lib/resources/assets/images/services/entertainment-icon.svg
+   - lib/resources/assets/images/services/medicine-icon.svg
+   - lib/resources/assets/images/services/service-icon.svg
+   - lib/resources/assets/images/services/tourism-icon.svg
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
@@ -76,5 +84,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  fonts:
+      - family: TimeIcons
+        fonts:
+              - asset: lib/resources/assets/fonts/TimeIcons.ttf
 
 
