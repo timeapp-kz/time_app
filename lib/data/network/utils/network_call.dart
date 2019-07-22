@@ -6,12 +6,12 @@ import 'dart:convert';
 import 'dart:io';
 
 
-class Network {
+class NetworkCall {
 
   // next three lines makes this class a Singleton
-  static Network _instance = Network.internal();
-  Network.internal();
-  factory Network() => _instance;
+  static NetworkCall _instance = NetworkCall.internal();
+  NetworkCall.internal();
+  factory NetworkCall() => _instance;
 
 
   final JsonDecoder _decoder = JsonDecoder();
@@ -21,7 +21,7 @@ class Network {
   Future<dynamic> doRequest({@required String path, @required String method, @required BuildContext context, Map requestParams, Map body}) async {
 
     BaseOptions options = BaseOptions(
-      baseUrl: '',
+      baseUrl: 'https://subshop.kz/api',
       connectTimeout: 10000,
       receiveTimeout: 10000,
       method: method,
@@ -39,10 +39,10 @@ class Network {
     try {
       response = await dio.request(path, queryParameters: requestParams, data: formData);
 
-      _decodedRes = _decoder.convert(response.data);
+      _decodedRes = _decoder.convert(response.toString());
 
-      print('NETWORK: ======================='  + _decodedRes['data'].toString());
-      return _decodedRes['data'];
+      print('NETWORK: ======================='  + _decodedRes['data'][0].toString());
+      return _decodedRes['data'][0];
 
     } on DioError catch (error) {
       _handleError(error, context);

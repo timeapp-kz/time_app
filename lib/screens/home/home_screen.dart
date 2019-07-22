@@ -24,7 +24,6 @@ class _HomeScreenState extends State<HomeScreen> {
   HomeBloc bloc;
 
   AppBar _appBar;
-
   Widget _appBarTitle;
 
   int _currentIndex = 0;
@@ -41,7 +40,13 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     bloc = BlocProvider.of<HomeBloc>(context);
     super.initState();
+    bloc.getServices();
+  }
 
+  @override
+  void dispose() {
+    //bloc.dispose();
+    super.dispose();
   }
 
   @override
@@ -86,6 +91,8 @@ class _HomeScreenState extends State<HomeScreen> {
       _currentIndex = index;
     });
   }
+
+
 
 
 //  _appBarTitle = SvgPicture.asset(
