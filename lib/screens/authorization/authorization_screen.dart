@@ -65,6 +65,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                 NotificationListener<OverscrollIndicatorNotification>(
                   onNotification: (overscroll) {
                     overscroll.disallowGlow();
+                    return false;
                   },
                   child: SizedBox(
                     height: screenAwareHeight(1050.0, context),

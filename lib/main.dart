@@ -48,8 +48,8 @@ class TimeApp extends StatelessWidget {
           );
         } else {
           return BlocProvider(
-            bloc: HomeBloc(),
-            child: HomeScreen(),
+            bloc: AuthorizationBloc(),
+            child: AuthorizationScreen(),
           );
         }
       },

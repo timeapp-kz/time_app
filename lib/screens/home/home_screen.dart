@@ -40,7 +40,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     bloc = BlocProvider.of<HomeBloc>(context);
     super.initState();
-    bloc.getServices();
   }
 
   @override

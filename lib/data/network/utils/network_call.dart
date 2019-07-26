@@ -36,13 +36,14 @@ class NetworkCall {
       formData = FormData.from(body);
     }
 
+    print('============================= REQUEST PATH: ' + path);
     try {
       response = await dio.request(path, queryParameters: requestParams, data: formData);
 
       _decodedRes = _decoder.convert(response.toString());
 
-      print('NETWORK: ======================='  + _decodedRes['data'][0].toString());
-      return _decodedRes['data'][0];
+      print('NETWORK: ======================='  + _decodedRes['data'].toString());
+      return _decodedRes['data'];
 
     } on DioError catch (error) {
       _handleError(error, context);

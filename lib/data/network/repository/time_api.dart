@@ -12,14 +12,56 @@ class TimeAPI {
 
   NetworkCall _networkCall = NetworkCall();
 
-  static final SERVICES = '/getIcons';
+  static final ALL_SERVICES = '/getMain';
+  static final ACTUAL_SERVICES = '/getActual';
+  static final SUBSERVICES = '/getItem';
 
-  Future<ServicesResponse> getAllServices() async {
+  Future<List<ServicesResponse>> getAllServices() async {
 
-    dynamic response = await _networkCall.doRequest(path: SERVICES, method: 'GET', context: null);
+    dynamic response = await _networkCall.doRequest(path: ALL_SERVICES, method: 'GET', context: null);
 
-    return ServicesResponse.map(response);
+    List<ServicesResponse> servicesList = List();
+
+    if (response.isNotEmpty) {
+      for (final service in response) {
+        servicesList.add(ServicesResponse.map(service));
+      }
+    }
+
+    return servicesList;
   }
 
+
+  Future<List<ServicesResponse>> getActualServices() async {
+
+    dynamic response = await _networkCall.doRequest(path: ACTUAL_SERVICES, method: 'GET', context: null);
+
+    List<ServicesResponse> servicesList = List();
+
+    if (response.isNotEmpty) {
+      for (final service in response) {
+        servicesList.add(ServicesResponse.map(service));
+      }
+    }
+
+    return servicesList;
+  }
+
+  Future<List<ServicesResponse>> getSubServicesByType(String serviceType) async {
+    String requestUrl = SUBSERVICES + '/$serviceType';
+
+    dynamic response = await _networkCall.doRequest(path: requestUrl, method: 'GET', context: null);
+
+    List<ServicesResponse> servicesList = List();
+
+    if (response != null && response.isNotEmpty) {
+      for (final service in response) {
+        servicesList.add(ServicesResponse.map(service));
+      }
+    }
+
+
+    return servicesList;
+  }
 
 }
