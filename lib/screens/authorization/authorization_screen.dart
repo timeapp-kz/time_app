@@ -56,7 +56,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                 ),
                 Center(
                   child: SvgPicture.asset(
-                    'lib/resources/assets/images/logo.svg',
+                    'assets/images/logo.svg',
                     color: AppColors.primaryAppColor,
                     height: screenAwareHeight(200, context),
                     width: screenAwareWidth(300, context),
@@ -183,7 +183,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
 //          decoration: BoxDecoration(
 //            image: DecorationImage(
 //                image: ExactAssetImage(
-//                    'lib/resources/assets/images/authorization_bg.jpg'),
+//                    'assets/images/authorization_bg.jpg'),
 //                fit: BoxFit.cover,
 //                colorFilter: ColorFilter.mode(
 //                    Color.fromRGBO(0, 0, 0, 110), BlendMode.darken)),
@@ -212,7 +212,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
 //          crossAxisAlignment: CrossAxisAlignment.start,
 //          children: <Widget>[
 //            SvgPicture.asset(
-//              'lib/resources/assets/images/logo.svg',
+//              'assets/images/logo.svg',
 //              color: Colors.white,
 //              height: screenAwareHeight(200, context),
 //              width: screenAwareWidth(300, context),

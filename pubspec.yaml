@@ -25,6 +25,7 @@ dependencies:
   firebase_auth: ^0.11.1+7
   flutter_masked_text: ^0.8.0
   country_pickers: ^1.1.0
+  global_configuration: ^1.2.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -48,16 +49,21 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - lib/resources/assets/images/authorization_bg.jpg
-   - lib/resources/assets/images/logo.svg
+   - assets/images/authorization_bg.jpg
+   - assets/images/logo.svg
 
    # Services assets
-   - lib/resources/assets/images/services/beauty-icon.svg
-   - lib/resources/assets/images/services/auto-icon.svg
-   - lib/resources/assets/images/services/entertainment-icon.svg
-   - lib/resources/assets/images/services/medicine-icon.svg
-   - lib/resources/assets/images/services/service-icon.svg
-   - lib/resources/assets/images/services/tourism-icon.svg
+   - assets/images/services/beauty-icon.svg
+   - assets/images/services/auto-icon.svg
+   - assets/images/services/entertainment-icon.svg
+   - assets/images/services/medicine-icon.svg
+   - assets/images/services/service-icon.svg
+   - assets/images/services/tourism-icon.svg
+
+   # Configuration files for different environments
+   - lib/resources/configs/prod_config.json
+   - lib/resources/configs/alpha_config.json
+   - lib/resources/configs/beta_config.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -88,6 +94,6 @@ flutter:
   fonts:
       - family: TimeIcons
         fonts:
-              - asset: lib/resources/assets/fonts/TimeIcons.ttf
+              - asset: assets/fonts/TimeIcons.ttf
 
 

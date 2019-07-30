@@ -1,5 +1,9 @@
 import 'dart:async';
+import 'package:flutter/material.dart';
+import 'dart:io';
 
+import 'package:time_app/utils/common_utils.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:time_app/data/models/services_response.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:time_app/bloc/bloc_provider.dart';
@@ -29,6 +33,25 @@ class HomeBloc implements BlocBase {
 
   Future<List<ServicesResponse>> getSubServices(String serviceType) async {
     return await _api.getSubServicesByType(serviceType);
+  }
+
+  SvgPicture getNetworkImage(String url, BuildContext context) {
+
+    try {
+      return SvgPicture.network(
+        url,
+        height: screenAwareHeight(80, context),
+        width: screenAwareWidth(80, context),
+      );
+    } catch(error) {
+      print('===================================== FAILED TO RETREIVE IMAGE FROM NETWORK: ' + error.toString());
+
+      return SvgPicture.asset(
+        'lib/resources/assets/images/logo.svg',
+        height: screenAwareHeight(80, context),
+        width: screenAwareWidth(80, context),
+      );
+    }
   }
 
 

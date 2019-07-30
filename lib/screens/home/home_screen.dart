@@ -6,7 +6,7 @@ import 'package:time_app/utils/common_utils.dart';
 import 'package:time_app/resources/values/app_colors.dart';
 import 'package:time_app/bloc/home_bloc.dart';
 import 'package:time_app/bloc/bloc_provider.dart';
-import 'package:time_app/resources/assets/icons/time_icons_icons.dart';
+import 'package:time_app/resources/icons/time_icons_icons.dart';
 import 'home_services_tabs.dart';
 import 'package:time_app/screens/history/history_screen.dart';
 import 'package:time_app/screens/notifications/notifications_screen.dart';
@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
         centerTitle: true,
         title: SvgPicture.asset(
-          'lib/resources/assets/images/logo.svg',
+          'assets/images/logo.svg',
           color: AppColors.primaryAppColor,
           height: screenAwareHeight(100, context),
           width: screenAwareWidth(240, context),

@@ -16,7 +16,8 @@ class HomeServicesTabs extends StatefulWidget {
   }
 }
 
-class _HomeServicesTabs extends State<HomeServicesTabs> with AutomaticKeepAliveClientMixin  {
+class _HomeServicesTabs extends State<HomeServicesTabs>
+    with AutomaticKeepAliveClientMixin {
   HomeBloc _bloc;
   List<ServicesResponse> _allServices = List();
   List<ServicesResponse> _actualServices = List();
@@ -56,12 +57,10 @@ class _HomeServicesTabs extends State<HomeServicesTabs> with AutomaticKeepAliveC
           ),
           Container(
             height: screenAwareHeight(1200, context),
-            child: TabBarView(
-                children: <Widget>[
-                  _buildActualServices(),
-                  _buildAllServices()
-                ]
-            ),
+            child: TabBarView(children: <Widget>[
+              _buildActualServices(),
+              _buildAllServices()
+            ]),
           )
         ],
       ),
@@ -113,22 +112,20 @@ class _HomeServicesTabs extends State<HomeServicesTabs> with AutomaticKeepAliveC
         Column(
           children: <Widget>[
             GestureDetector(
-              onTap: () =>_getServicesByType(service.state, service.type),
+              onTap: () => _getServicesByType(service.state, service.type),
               child: Container(
                 height: screenAwareHeight(220, context),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(style: BorderStyle.solid, color: Colors.grey, width: screenAwareWidth(5, context)),
+                  border: Border.all(
+                      style: BorderStyle.solid,
+                      color: Colors.grey,
+                      width: screenAwareWidth(5, context)),
                 ),
-                child: SvgPicture.network(
-                  service.imgUrl,
-                  height: screenAwareHeight(140, context),
-                  width: screenAwareWidth(140, context),
-                ),
+                child: _bloc.getNetworkImage(service.imgUrl, context),
               ),
             ),
-
             Text(
               service.type,
               textAlign: TextAlign.center,
@@ -159,7 +156,6 @@ class _HomeServicesTabs extends State<HomeServicesTabs> with AutomaticKeepAliveC
   }
 
   _getServicesByType(String serviceType, String serviceName) async {
-
     print('SERVICE TYPE: ' + serviceType);
     print('SERVICE NAME: ' + serviceName);
 
@@ -169,26 +165,54 @@ class _HomeServicesTabs extends State<HomeServicesTabs> with AutomaticKeepAliveC
     final response = await _bloc.getSubServices(serviceType);
 
     List<Widget> services = List();
+
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+              shape: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25)),
+              ),
+              title: Text(
+                serviceName,
+              ),
+              content: Container(
+                height: screenAwareHeight(900, context),
+                width: MediaQuery.of(context).size.width,
+                child: GridView.count(
+                  mainAxisSpacing: screenAwareHeight(80, context),
+                  childAspectRatio: (itemWidth / itemHeight),
+                  crossAxisCount: 4,
+                  children: services,
+                ),
+              ));
+        });
+
     for (final service in response) {
       services.add(
         Column(
           children: <Widget>[
-            Container(
+            GestureDetector(
+              child: Container(
                 height: screenAwareHeight(160, context),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(style: BorderStyle.solid,
+                  border: Border.all(
+                      style: BorderStyle.solid,
                       color: Colors.grey,
                       width: screenAwareWidth(5, context)),
                 ),
-                child: SvgPicture.network(
-                  service.imgUrl,
-                  height: screenAwareHeight(80, context),
-                  width: screenAwareWidth(80, context),
+                child: _bloc.getNetworkImage(service.imgUrl, context),
+              ),
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  // bikeCode=99999999999 is done if user submitted feedback from the menu (not after ride). This is back-end problem and needs to be reviewed later
+                  builder: (context) => SpecialistsScreen(),
                 ),
               ),
-
+            ),
             Text(
               service.type,
               textAlign: TextAlign.center,
@@ -198,32 +222,9 @@ class _HomeServicesTabs extends State<HomeServicesTabs> with AutomaticKeepAliveC
         ),
       );
     }
-
-    showDialog(
-        context: context,
-      builder: (context) {
-        return AlertDialog(
-          shape: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(25)),
-          ),
-          title: Text(
-            serviceName,
-          ),
-          content: Container(
-            height: screenAwareHeight(900, context),
-            width:  MediaQuery.of(context).size.width,
-            child:  GridView.count(
-              mainAxisSpacing: screenAwareHeight(80, context),
-              childAspectRatio: (itemWidth / itemHeight),
-              crossAxisCount: 4,
-              children: services,
-            ),
-          )
-        );
-      }
-    );
-
   }
+
+
 
   @override
   bool get wantKeepAlive => true;
@@ -240,8 +241,6 @@ class _HomeServicesTabs extends State<HomeServicesTabs> with AutomaticKeepAliveC
 //Text(_services[index].type)
 //],
 //),
-
-
 
 //Container(
 //height: screenAwareHeight(1200, context),
