@@ -6,7 +6,6 @@ import 'package:time_app/resources/values/app_colors.dart';
 import 'package:time_app/resources/components/primary_button.dart';
 import 'package:time_app/bloc/home_bloc.dart';
 import 'package:time_app/bloc/bloc_provider.dart';
-import 'package:time_app/data/models/services_response.dart';
 import 'package:time_app/screens/specialists/specialists_screen.dart';
 
 class HomeServicesTabs extends StatefulWidget {
@@ -19,8 +18,8 @@ class HomeServicesTabs extends StatefulWidget {
 class _HomeServicesTabs extends State<HomeServicesTabs>
     with AutomaticKeepAliveClientMixin {
   HomeBloc _bloc;
-  List<ServicesResponse> _allServices = List();
-  List<ServicesResponse> _actualServices = List();
+  List<dynamic> _allServices = List();
+  List<dynamic> _actualServices = List();
 
   @override
   void initState() {
@@ -105,7 +104,7 @@ class _HomeServicesTabs extends State<HomeServicesTabs>
     );
   }
 
-  List<Widget> _servicesList(List<ServicesResponse> servicesList) {
+  List<Widget> _servicesList(List<dynamic> servicesList) {
     List<Widget> services = List();
     for (final service in servicesList) {
       services.add(

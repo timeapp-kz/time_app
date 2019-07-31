@@ -1,6 +1,4 @@
 import 'package:time_app/data/network/utils/network_call.dart';
-import 'package:time_app/data/models/services_response.dart';
-import 'package:time_app/data/models/masters_response.dart';
 
 import 'dart:convert';
 
@@ -91,15 +89,14 @@ class TimeAPI {
 
 
 
-  Future<List<ServicesResponse>> getAllServices() async {
+  Future<dynamic> getAllServices() async {
 
     dynamic response = await _networkCall.doRequest(path: ALL_SERVICES, method: 'GET', context: null);
 
-    List<ServicesResponse> servicesList = List();
+    List<dynamic> servicesList = List();
 
     if (response.isNotEmpty) {
       for (final service in response) {
-        servicesList.add(ServicesResponse.map(service));
       }
     }
 
@@ -107,31 +104,29 @@ class TimeAPI {
   }
 
 
-  Future<List<ServicesResponse>> getActualServices() async {
+  Future<dynamic> getActualServices() async {
 
     dynamic response = await _networkCall.doRequest(path: ACTUAL_SERVICES, method: 'GET', context: null);
 
-    List<ServicesResponse> servicesList = List();
+    List<dynamic> servicesList = List();
 
     if (response.isNotEmpty) {
       for (final service in response) {
-        servicesList.add(ServicesResponse.map(service));
       }
     }
 
     return servicesList;
   }
 
-  Future<List<ServicesResponse>> getSubServicesByType(String serviceType) async {
+  Future<dynamic> getSubServicesByType(String serviceType) async {
     String requestUrl = '/$serviceType';
 
     dynamic response = await _networkCall.doRequest(path: requestUrl, method: 'GET', context: null);
 
-    List<ServicesResponse> servicesList = List();
+    List<dynamic> servicesList = List();
 
     if (response != null && response.isNotEmpty) {
       for (final service in response) {
-        servicesList.add(ServicesResponse.map(service));
       }
     }
 
@@ -139,15 +134,14 @@ class TimeAPI {
   }
 
 
-  Future<List<MastersResponse>> getMasters(String serviceType) async {
+  Future<dynamic> getMasters(String serviceType) async {
 
     dynamic response = await _networkCall.doRequest(path: '', method: 'GET', context: null);
 
-    List<MastersResponse> servicesList = List();
+    List<dynamic> servicesList = List();
 
     if (response != null && response.isNotEmpty) {
       for (final service in response) {
-        servicesList.add(MastersResponse.map(service));
       }
     }
 

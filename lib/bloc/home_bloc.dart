@@ -4,7 +4,6 @@ import 'dart:io';
 
 import 'package:time_app/utils/common_utils.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:time_app/data/models/services_response.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:time_app/bloc/bloc_provider.dart';
 import 'package:time_app/data/network/repository/time_api.dart';
@@ -13,25 +12,25 @@ class HomeBloc implements BlocBase {
 
   TimeAPI _api = TimeAPI();
 
-  final _servicesListController = StreamController<List<ServicesResponse>>();
+  final _servicesListController = StreamController<List<dynamic>>();
 
 
-  Stream<List<ServicesResponse>> get servicesList => _servicesListController.stream.asBroadcastStream();
+  Stream<List<dynamic>> get servicesList => _servicesListController.stream.asBroadcastStream();
 
 
   void signOut() async {
     FirebaseAuth.instance.signOut();
   }
 
-  Future<List<ServicesResponse>> getAllServices() async {
+  Future<List<dynamic>> getAllServices() async {
     return await _api.getAllServices();
   }
 
-  Future<List<ServicesResponse>> getActualServices() async {
+  Future<List<dynamic>> getActualServices() async {
     return await _api.getActualServices();
   }
 
-  Future<List<ServicesResponse>> getSubServices(String serviceType) async {
+  Future<List<dynamic>> getSubServices(String serviceType) async {
     return await _api.getSubServicesByType(serviceType);
   }
 
